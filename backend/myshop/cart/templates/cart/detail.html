@@ -1,0 +1,46 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+Your Shopping Cart
+{% endblock %}
+{% block content %}
+<h1 style="text-align: center; color: #333; margin-top: 20px;">Your Shopping Cart</h1>
+<table class="cart" style="width: 90%; margin: 20px auto; border-collapse: collapse;">
+  <thead style="background-color: #333; color: white;">
+    <tr>
+      <th style="padding: 10px; text-align: left;">Image</th>
+      <th style="padding: 10px; text-align: left;">Product</th>
+      <th style="padding: 10px; text-align: left;">Quantity</th>
+      <th style="padding: 10px; text-align: left;">Remove</th>
+      <th style="padding: 10px; text-align: left;">Unit Price</th>
+      <th style="padding: 10px; text-align: left;">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in cart %}
+    <tr style="border-bottom: 1px solid #ddd;">
+      <td style="padding: 10px;">
+        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="max-width: 100px; height: auto;" />
+      </td>
+      <td style="padding: 10px;">{{ item.product.name }}</td>
+      <td style="padding: 10px;">
+        <form action="{% url 'cart:cart_add' item.product.id %}" method="post">
+          {{ item.update_quantity_form.quantity }} 
+          {% csrf_token %}
+          <button type="submit" style="padding: 5px 10px; background-color: #333; color: white; border: none; cursor: pointer;">Update</button>
+        </form>
+      </td>
+      <td style="padding: 10px;">
+        <a href="{% url 'cart:cart_remove' item.product.id %}" style="color: red; text-decoration: none;">Remove</a>
+      </td>
+      <td style="padding: 10px;">${{ item.product.price }}</td>
+      <td style="padding: 10px;">${{ item.total_price }}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td colspan="5" style="padding: 10px; text-align: right; font-weight: bold;">Total</td>
+      <td style="padding: 10px; text-align: left; font-weight: bold;">${{ cart.get_total_price }}</td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}

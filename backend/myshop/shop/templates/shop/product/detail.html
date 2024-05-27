@@ -1,0 +1,105 @@
+{% extends "shop/base.html" %} 
+{% load static %} 
+{% block title %} 
+{% if category %}{{category.name}}{% else %}AIA{% endif %} {% endblock %} 
+{% block content %}
+<header>
+  <p>Review All Newly Released Products</p>
+</header>
+
+<div class="barner">
+  <img
+    src="https://about.puma.com/sites/default/files/styles/dd_hero_tablet/public/media/news/images/puma-forever-faster-brand-campaign-mondo-duplantis.jpg?itok=0x_sByXV"
+    alt="Barner"
+  />
+</div>
+
+{% for section in sections %}
+<main>
+  <h2 class="subheader">{{section.name}}</h2>
+  <div class="products">
+    {% for category in section.categories.all %}
+    <div class="product">
+      <img src="{{category.image.url}}" alt="{{category.name}}" />
+      <p>{{category.name}}</p>
+    </div>
+    {% endfor %}
+  </div>
+</main>
+{% endfor %}
+<main>
+  <h2 class="subheader">Review Our Icon Model</h2>
+  <div class="products">
+    <div class="product2">
+      <img
+        src="https://c.tadst.com/gfx/750w/istock-1061168890.jpg"
+        alt="Barner"
+      />
+      <p>Father's Day Gift</p>
+    </div>
+    <div class="product2">
+      <img
+        src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/468e4793-23a0-4f1d-86f6-150cd6e42ad3/court-vision-low-next-nature-shoes-zFk7HL.png"
+        alt="Discover Dynamic Air"
+      />
+      <p>Discover Dynamic Air</p>
+    </div>
+    <div class="product2">
+      <img
+        src="https://static.nike.com/a/images/f_auto/dpr_3.0,cs_srgb/w_363,c_limit/12ce0707-bd32-46b8-ba44-777f502517a3/die-besten-nike-tennisschuhe-f%C3%BCr-herren-und-damen.jpg"
+        alt="Barner"
+      />
+      <p>New Style from Nike Tennis</p>
+    </div>
+    <div class="product2">
+      <img
+        src="https://www.gonexsport.com/cdn/shop/products/portable-home-gym.jpg?v=1696922209"
+        alt="Barner"
+      />
+      <p>Fitness equipment</p>
+    </div>
+    <div class="product2">
+      <img
+        src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/468e4793-23a0-4f1d-86f6-150cd6e42ad3/court-vision-low-next-nature-shoes-zFk7HL.png"
+        alt="Discover Dynamic Air"
+      />
+      <p>Discover Dynamic Air</p>
+    </div>
+  </div>
+</main>
+
+
+<div class="quick-nav">
+  <div class="quick-nav-items">
+    <h2>Shoes</h2>
+    <p>Golf Sheos</p>
+    <p>Winter Sports Shoes</p>
+    <p>Walking Shoes</p>
+    <p>Weight Lifting Shoes</p>
+  </div>
+  <div class="quick-nav-items">
+    <h2>Shoes</h2>
+    <p>Golf Sheos</p>
+    <p>Winter Sports Shoes</p>
+    <p>Walking Shoes</p>
+    <p>Weight Lifting Shoes</p>
+  </div>
+  <div class="quick-nav-items">
+    <h2>Shoes</h2>
+    <p>Golf Sheos</p>
+    <p>Winter Sports Shoes</p>
+    <p>Walking Shoes</p>
+    <p>Weight Lifting Shoes</p>
+  </div>
+  <div class="quick-nav-items">
+    <h2>Shoes</h2>
+    <p>Golf Sheos</p>
+    <p>Winter Sports Shoes</p>
+    <p>Walking Shoes</p>
+    <p>Weight Lifting Shoes</p>
+  </div>
+</div>
+<div class="horizontal-line">
+  <hr />
+</div>
+{% endblock %}

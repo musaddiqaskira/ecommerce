@@ -1,0 +1,33 @@
+{% extends "shop/base.html" %} {% load static %} {% block title %} 
+{% if category %}{{category.name}}{% else %}AIA{% endif %} {% endblock %} 
+{% block content %}
+<main class="products-container">
+  {% for product in products %}
+  <div class="product-card">
+    <img src="{{product.image.url}}" alt="{{product.name}}" />
+    <div>
+      <p class="info">Sustainable Materials</p>
+      <h4>{{product.name}}</h4>
+      <p class="description">{{product.description}}</p>
+      <p class="price">${{product.price}}</p>
+    </div>
+    <div class="like-cart">
+      <form action="{% url 'cart:cart_add' product.id %}" method="post">
+        {{cart_product_form.quantity}} {% csrf_token %}
+        <button type="submit">
+         <img
+        src="https://cdn-icons-png.flaticon.com/256/54/54895.png"
+        alt="cart icon"
+      />
+        </button>
+      </form>
+       <img
+            src="https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png"
+            alt="like icon"
+          />
+      
+    </div>
+  </div>
+  {% endfor %}
+</main>
+{% endblock %}

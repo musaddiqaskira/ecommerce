@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  </head>
+  <body>
+    <nav class="top-nav">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Jumpman_logo.svg/1200px-Jumpman_logo.svg.png"
+        alt="Jordan Logo"
+      />
+
+      <section>
+        <p>Find a store</p>
+        <p>|</p>
+        <p>Help</p>
+        <p>|</p>
+        <p>Join Us</p>
+        <p>|</p>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'account:logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'account:login' %}">Login</a>
+        {% endif %}
+      </section>
+    </nav>
+    <nav>
+      <a href="{% url 'shop:product_list' %}">
+        <img
+          src="https://cdn.freebiesupply.com/logos/large/2x/nike-4-logo-png-transparent.png"
+          alt="Jordan Logo"
+        />
+      </a>
+      <section>
+        <p>New Products and Highlights</p>
+        <p>Man</p>
+        <p>Woman</p>
+        <p>Child</p>
+        <p>Discount</p>
+      </section>
+      <section class="interaction">
+        <div class="search-container">
+          <img
+            src="https://lordicon.com/icons/system/solid/42-search.svg"
+            alt="search icon"
+          />
+          <input type="text" placeholder="Search" />
+        </div>
+
+        <img
+          src="https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png"
+          alt="like icon"
+        />
+        <a href="{% url 'cart:cart_detail' %}">
+          <img
+            src="https://cdn-icons-png.flaticon.com/256/54/54895.png"
+            alt="cart icon"
+          />
+        </a>
+      </section>
+    </nav>
+
+    <div id="content">{% block content %} {% endblock %}</div>
+
+    <footer>
+      <div class="left">
+        <div class="footer-item">
+          <h2>Shoes</h2>
+          <p>Golf Sheos</p>
+          <p>Winter Sports Shoes</p>
+          <p>Walking Shoes</p>
+          <p>Weight Lifting Shoes</p>
+        </div>
+        <div class="footer-item">
+          <h2>Shoes</h2>
+          <p>Golf Sheos</p>
+          <p>Winter Sports Shoes</p>
+          <p>Walking Shoes</p>
+          <p>Weight Lifting Shoes</p>
+        </div>
+        <div class="footer-item">
+          <h2>Shoes</h2>
+          <p>Golf Sheos</p>
+          <p>Winter Sports Shoes</p>
+          <p>Walking Shoes</p>
+          <p>Weight Lifting Shoes</p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="footer-item">
+          <img
+            src="https://www.iconpacks.net/icons/1/free-globe-icon-913-thumb.png"
+            alt="globe icon"
+          />
+
+          <h2>Turkey</h2>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

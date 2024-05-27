@@ -1,0 +1,21 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+Your Shopping Cart
+{% endblock %}
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin-top: 100px; margin-bottom: 100px;">
+  <h1 style="font-size: 24px; color: #333;">Login</h1>
+  <p style="font-size: 16px; color: #666;">Please, use the following form to login</p>
+  <form method="post" style="width: 300px; display: flex; flex-direction: column; align-items: center;">
+    {% csrf_token %}
+    <div style="width: 100%; margin-bottom: 10px;">
+      {{ form.as_p }}
+    </div>
+    <button type="submit" style="background-color: #4CAF50; color: white; padding: 14px 20px; margin: 8px 0; border: none; cursor: pointer; width: 100%;">
+      Login
+    </button>
+  </form>
+  <a href="{% url 'account:signup' %}" style="margin-top: 10px; color: #4CAF50; text-decoration: none;">Sign Up</a>
+</div>
+{% endblock %}
